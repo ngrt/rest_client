@@ -1,9 +1,13 @@
 require 'rest-client'
 
-#https://www.bing.com/search?q=macron
+puts "What do you want to search on Bing ?"
 
-response = RestClient.get 'https://www.bing.com/search?q=macron'
+input = gets.chomp
 
-response.code
+base_URL =  "https://www.bing.com/search?"
+
+response = RestClient.get base_URL, {params: {q: input}}
+
+puts response.code
 response.body
-puts response.headers
+response.headers
